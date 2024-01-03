@@ -10,8 +10,12 @@ function FormA({setStep, onSubmit, age }) {
     setStep(4);
     onSubmit({formtype:"Form A",dc:`${dc}`,marvelShows:'',age:`${age}`})
   };
+  const staypage=(e)=>{
+    e.preventDefault();
+    setStep(2);
+  }
   return (
-    <form id='dc' onSubmit={dc.length>0?handleSubmit:""}>
+    <form id='dc' onSubmit={(event)=>dc.length!=''?handleSubmit(event):staypage(event)}>
       <h2>Form A</h2>
       <label>
         Select DC Shows:

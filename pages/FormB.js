@@ -8,9 +8,12 @@ function FormB({setStep, onSubmit, age }) {
     setStep(4);
     onSubmit({formtype:"Form A",dc:'',marvelShows:`${marvelShows}`,age:`${age}`})
   };
-
+  const staypage=(e)=>{
+    e.preventDefault();
+    setStep(3);
+  }
   return (
-    <form id='marvel' onSubmit={marvelShows.length>0?handleSubmit:""}>
+    <form id='marvel' onSubmit={(event)=>marvelShows!=''?handleSubmit(event):staypage(event)}>
       <h2>Form B</h2>
       <label>
         Select Marvel Shows:

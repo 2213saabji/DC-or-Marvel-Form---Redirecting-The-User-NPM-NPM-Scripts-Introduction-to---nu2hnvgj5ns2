@@ -17,12 +17,12 @@ const App = () => {
           <h1>Step 1: Select Form Type and Enter Age</h1>
           <label>
             Enter your age:
-            <input value={age} onChange={(e)=>setAge(e.target.value)}/>
+            <input type="number" value={age} onChange={(e)=>setAge(e.target.value)}/>
           </label>
           <br />
           <label>
             Select Form Type:
-            <select onChange={(e) =>{e.preventDefault(); age.length>0?setStep(parseInt(e.target.value)):""}}>
+            <select onChange={(e) =>{e.preventDefault(); age>0?setStep(parseInt(e.target.value)):""}}>
               <option value={1}>--Select--</option>
               <option value={2}>Form A</option>
               <option value={3}>Form B</option>
