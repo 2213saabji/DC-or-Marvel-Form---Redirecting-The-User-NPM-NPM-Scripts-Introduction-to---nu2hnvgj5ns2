@@ -6,10 +6,10 @@ function Summary({ formData }) {
       <h2>Summary</h2>
       <p>Form Type:{formData.formtype} </p>
       <p>Age: {formData.age} </p>
-      {formData.dc.length>0?
-      <p>DC Shows: {formData.dc} </p>
+      {formData.dc!=''?
+      (<p>DC Shows: {formData.dc} </p>)
 :
-      <p>Marvel Shows: {formData.marvelShows}</p>
+      (<p>Marvel Shows: {formData.marvelShows}</p>)
 }
     </div>
   );

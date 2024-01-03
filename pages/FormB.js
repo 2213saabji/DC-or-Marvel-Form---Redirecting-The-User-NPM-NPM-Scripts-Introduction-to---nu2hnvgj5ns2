@@ -6,7 +6,7 @@ function FormB({setStep, onSubmit, age }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     setStep(4);
-    onSubmit({formtype:"Form A",dc:'',marvelShows:`${marvelShows}`,age:`${age}`})
+    onSubmit({formtype:"Form B",dc:'',marvelShows:`${marvelShows}`,age:`${age}`})
   };
   const staypage=(e)=>{
     e.preventDefault();
