@@ -8,6 +8,7 @@ const App = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
   const [age, setAge] = useState('');
+  
 
   return (
     <div>
@@ -16,12 +17,12 @@ const App = () => {
           <h1>Step 1: Select Form Type and Enter Age</h1>
           <label>
             Enter your age:
-            <input value={age} />
+            <input value={age} onChange={(e)=>setAge(e.target.value)}/>
           </label>
           <br />
           <label>
             Select Form Type:
-            <select onChange={(e) => setStep(parseInt(e.target.value))}>
+            <select onChange={(e) =>{e.preventDefault(); age.length>0?setStep(parseInt(e.target.value)):""}}>
               <option value={1}>--Select--</option>
               <option value={2}>Form A</option>
               <option value={3}>Form B</option>
@@ -32,12 +33,12 @@ const App = () => {
       )}
       {step === 2 && (
         <div>
-          <FormA age={age} />
+          <FormA setStep={setStep} onSubmit={setFormData} age={age} />
         </div>
       )}
       {step === 3 && (
         <div>
-          <FormB age={age} />
+          <FormB setStep={setStep} onSubmit={setFormData} age={age} />
         </div>
       )}
       {(step === 2 || step === 3) && age ? (
@@ -48,8 +49,8 @@ const App = () => {
 
       {step === 4 && (
         <div>
-          <Summary />
-          <button id='start-over'>Start Over</button>
+          <Summary formData={formData} />
+          <button onClick={()=>{setStep(1); setAge(''); setFormData({})}} id='start-over'>Start Over</button>
         </div>
       )}
     </div>
